@@ -13,6 +13,7 @@ export class Menu {
 export const menuDefs = [
     { name: '', }
 ];
+// export const menusDef = [new Menu('文(F)'), new Menu('(E)'), new Menu('段啊落(P)'), new Menu('格式(O)'), new Menu('视图(V)'), new Menu('主题(T)'), new Menu('帮助(H)')]
 export const menusDef = [new Menu('文件(F)'), new Menu('编辑(E)'), new Menu('段落(P)'), new Menu('格式(O)'), new Menu('视图(V)'), new Menu('主题(T)'), new Menu('帮助(H)')]
 
 export const menusDefineStore = defineStore('menus', {

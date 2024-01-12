@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Menus from './Menus.vue';
 import { appWindow } from '@tauri-apps/api/window'
 import winHelper from '@/app/WinHelper';
 import { onMounted } from 'vue';
@@ -7,10 +8,10 @@ import exit from '@/assets/titlebar/exit.png'
 import fulls from '@/assets/titlebar/fulls.png'
 import mins from '@/assets/titlebar/mins.png'
 import min from '@/assets/titlebar/min.png'
-import { menusDefineStore } from "@/app/Menus.ts"
+// import { menusDefineStore } from "@/app/Menus.ts"
 
 const winState = winHelper.getWindowStateStore()();
-const menusStore = menusDefineStore();
+// const menusStore = menusDefineStore();
 
 onMounted(() => {
     document
@@ -28,21 +29,21 @@ onMounted(() => {
 <template>
     <div id="titlebar">
         <div :class="{ 'drag': !winState.maximized, 'drag-full': winState.maximized }" v-drag="true"></div>
-        <div class="menus">
-            <div class="menu" v-for="m in menusStore.getMenus()" :key="m.getText()">{{ m.getText() }}</div>
-        </div>
+        <Menus />
         <div class="icon">
-            <img :src="favicon" alt="favicon" draggable="false" oncontextmenu="return false;" />
+            <img :src="favicon" alt="favicon" v-drag="true" draggable="false" oncontextmenu="return false;" />
         </div>
 
-        <div class="titlebar-button" id="titlebar-minimize">
-            <img :src="min" alt="close" />
-        </div>
-        <div class="titlebar-button" id="titlebar-maximize">
-            <img :src="winState.maximized ? mins : fulls" alt="close" />
-        </div>
-        <div class="titlebar-button" id="titlebar-close">
-            <img :src="exit" alt="close" />
+        <div class="titlebar-ops">
+            <div class="titlebar-button" id="titlebar-minimize">
+                <img :src="min" alt="close" />
+            </div>
+            <div class="titlebar-button" id="titlebar-maximize">
+                <img :src="winState.maximized ? mins : fulls" alt="close" />
+            </div>
+            <div class="titlebar-button" id="titlebar-close">
+                <img :src="exit" alt="close" />
+            </div>
         </div>
     </div>
 </template>
@@ -131,23 +132,31 @@ onMounted(() => {
         z-index: 1;
     }
 
-
-    .titlebar-button {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        width: 35px;
-        height: 35px;
-        color: aliceblue;
+    .titlebar-ops {
+        z-index: 3000;
         border-radius: 4px;
+        background: #323233;
+        position: absolute;
+        top: 0;
+        right: 0;
 
-        img {
-            width: 16px;
-            height: 16px;
-        }
+        .titlebar-button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            color: aliceblue;
+            border-radius: 4px;
 
-        &:hover {
-            background: #4d4d4d;
+            img {
+                width: 16px;
+                height: 16px;
+            }
+
+            &:hover {
+                background: #4d4d4d;
+            }
         }
     }
 }
