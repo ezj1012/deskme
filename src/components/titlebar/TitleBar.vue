@@ -27,7 +27,7 @@ onMounted(() => {
 
 <template>
     <div id="titlebar">
-        <div class="drag" v-drag="true"></div>
+        <div :class="{ 'drag': !winState.maximized, 'drag-full': winState.maximized }" v-drag="true"></div>
         <div class="menus">
             <div class="menu" v-for="m in menusStore.getMenus()" :key="m.getText()">{{ m.getText() }}</div>
         </div>
@@ -122,6 +122,16 @@ onMounted(() => {
         z-index: 1;
     }
 
+    .drag-full {
+        position: absolute;
+        height: 35px;
+        width: calc(100% - 158px);
+        top: 0px;
+        left: 48px;
+        z-index: 1;
+    }
+
+
     .titlebar-button {
         display: inline-flex;
         justify-content: center;
@@ -142,4 +152,3 @@ onMounted(() => {
     }
 }
 </style>
-@/app/Menus

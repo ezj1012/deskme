@@ -1,6 +1,4 @@
 import { App } from 'vue'
-// import { PhysicalPosition, PhysicalSize, appWindow, currentMonitor } from '@tauri-apps/api/window'
-// import { defineStore } from 'pinia'
 import winHelper from './WinHelper';
 import { menusDefineStore } from "./Menus.ts"
 

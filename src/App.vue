@@ -54,7 +54,7 @@ onMounted(() => {
   <div id="main">
     <CompositeBar />
     <div id="vditor">
-      {{ curWindows }}
+      {{ `${curWindows.mouseX},${curWindows.mouseY}` }}
     </div>
   </div>
 </template>
