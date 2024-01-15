@@ -80,7 +80,6 @@ function update() {
 function display(idx: number) {
     return idx >= size.value
 }
-
 </script>
 
 <template>
@@ -89,8 +88,9 @@ function display(idx: number) {
         <div class="menu-icon" v-if="size == 0">
             <img :src="menuFold" />
         </div>
-        <div class="menu" v-for="(m, idx) in menus" :class="{ 'hide': display(idx) }" :key="m.getText()"><span>{{
-            m.getText() }}</span>
+        <div class="menu" v-for="(   m, idx   ) in    menus   " :class="{ 'hide': display(idx) }" :key="m.getText()">
+            <span>{{
+                m.getText() }}</span>
         </div>
         <div v-if="size != 0 && size < menus.length" class="menu-icon">
             <img :src="menuEllipsis" />

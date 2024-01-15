@@ -27,7 +27,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div id="titlebar">
+    <div id="titlebar" :class="{ 'br4': !winState.maximized }">
         <div :class="{ 'drag': !winState.maximized, 'drag-full': winState.maximized }" v-drag="true"></div>
         <Menus />
         <div class="icon">
@@ -60,36 +60,8 @@ onMounted(() => {
     top: 0;
     left: 0;
     right: 0;
-    border-radius: 4px 4px 0 0;
     color: rgba(204, 204, 204, 0.6);
     font-family: Segoe WPC, Segoe UI, Microsoft YaHei, sans-serif;
-
-    .menus {
-        position: absolute;
-        display: flex;
-        height: 26px;
-        z-index: 10;
-        top: 6px;
-        left: 48px;
-        padding-left: 4px;
-
-        .menu {
-            font-size: 13px;
-            height: 22px;
-            line-height: 22px;
-            padding: 0 8px;
-            font-weight: 500;
-            // background-color: rgb(0, 247, 123);
-            border-radius: 5px;
-            // margin-right: 2px;
-
-            &:hover {
-                color: #ccc;
-                background: #444;
-            }
-        }
-
-    }
 
     .icon {
         position: absolute;

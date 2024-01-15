@@ -71,7 +71,7 @@ class WinHelper {
     }
 
     public isMaximized(): boolean {
-        return this.windowState.maximized.value;
+        return this.windowState ? this.windowState.maximized.value : false;
     }
 
     public isMacOS(): boolean {
