@@ -2,9 +2,6 @@
 import { onMounted, onUnmounted, ref, type Ref } from 'vue';
 import { Menu, menusDefineStore } from "@/app/Menus.ts"
 
-import menuFold from '@/assets/titlebar/menu-fold.png'
-import menuEllipsis from '@/assets/titlebar/ellipsis.png'
-
 const menusStore = menusDefineStore();
 const minWidth = 600;
 const mockMenusRef = ref();
@@ -86,15 +83,14 @@ function display(idx: number) {
     <div ref="mockMenusRef" id="mockMenus" class="mock-menus"></div>
     <div class="titlebar-menus">
         <div class="menu-icon" v-if="size == 0">
-            <img :src="menuFold" />
+            <FIcon style="font-size: 18px;" type="icon-menu-fold" />
         </div>
         <div class="menu" v-for="(   m, idx   ) in    menus   " :class="{ 'hide': display(idx) }" :key="m.getText()">
             <span>{{
                 m.getText() }}</span>
         </div>
         <div v-if="size != 0 && size < menus.length" class="menu-icon">
-            <img :src="menuEllipsis" />
-            <FIcon class="icon" type="icon-gengduo" />
+            <FIcon class="ficon" type="icon-gengduo" />
         </div>
     </div>
 </template>
@@ -131,6 +127,10 @@ function display(idx: number) {
         padding: 0 8px;
         border-radius: 5px;
 
+        .ficon {
+            font-size: 13px;
+        }
+
         img {
             height: 20px;
             padding: 1px;
@@ -156,9 +156,7 @@ function display(idx: number) {
         line-height: 22px;
         padding: 0 8px;
         font-weight: 500;
-        // background-color: rgb(0, 247, 123);
         border-radius: 5px;
-        // margin-right: 2px;
 
         &:hover {
             color: #ccc;
